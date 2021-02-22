@@ -1,0 +1,19 @@
+version: "3"
+
+volumes:
+  node_modules:
+services:
+  react:
+    build:
+      context: .
+      dockerfile: "./Dockerfile.react"
+    container_name: "react"
+    working_dir: "/usr/src/app"
+    tty: true
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    volumes:
+      - ./frontend:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
